@@ -27,7 +27,8 @@ namespace Course_work_in_OOP_Lipatov
         /// <summary>
         /// Регулярное выражение для проверки корректности имени базы данных при создании
         /// </summary>
-        private static readonly Regex dbNameRegex = new Regex(@"^[A-Z][A-Za-z0-9_]{5,}$", RegexOptions.Compiled);
+        private static readonly Regex dbNameRegex =
+            new Regex(@"^[A-Z][A-Za-z0-9_]{5,}$", RegexOptions.Compiled);
 
         /// <summary>
         /// Конструктор менеджера
@@ -44,10 +45,13 @@ namespace Course_work_in_OOP_Lipatov
         private void LoadConnectionSettings()
         {
             var masterSetting = ConfigurationManager.ConnectionStrings["MasterDB"];
-            if (masterSetting == null || string.IsNullOrEmpty(masterSetting.ConnectionString))
+            if (masterSetting == null ||
+                string.IsNullOrEmpty(masterSetting.ConnectionString))
             {
-                throw new Exception("В файле конфигурации отсутствует строка подключения MasterDB.");
+                throw new Exception(
+                    "В файле конфигурации отсутствует строка подключения MasterDB.");
             }
+
             masterConnectionString = masterSetting.ConnectionString;
             currentDatabaseName = null;
         }
@@ -64,6 +68,7 @@ namespace Course_work_in_OOP_Lipatov
                     "База не выбрана", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+
             return true;
         }
 
@@ -83,7 +88,8 @@ namespace Course_work_in_OOP_Lipatov
             int? port = builder.Port;
             string? username = builder.Username;
             string? password = builder.Password;
-            connectionString = $"Host={host};Username={username};Password={password};Database={currentDatabaseName};Port={port}";
+            connectionString =
+                $"Host={host};Username={username};Password={password};Database={currentDatabaseName};Port={port}";
         }
 
         /// <summary>
@@ -96,6 +102,7 @@ namespace Course_work_in_OOP_Lipatov
             {
                 return;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(connectionString))
@@ -118,9 +125,12 @@ namespace Course_work_in_OOP_Lipatov
                     }
                 }
             }
-            catch (NpgsqlException ex) when (ex.Message.Contains("3D000") || ex.Message.Contains("does not exist"))
+            catch (NpgsqlException ex) when (ex.Message.Contains("3D000") ||
+                                             ex.Message.Contains("does not exist"))
             {
-                throw new Exception($"База данных '{currentDatabaseName}' не существует. Создайте её через управление БД.", ex);
+                throw new Exception(
+                    $"База данных '{currentDatabaseName}' не существует. Создайте её через управление БД.",
+                    ex);
             }
             catch (Exception ex)
             {
@@ -150,7 +160,8 @@ namespace Course_work_in_OOP_Lipatov
                 using (var conn = new NpgsqlConnection(masterConnectionString))
                 {
                     conn.Open();
-                    string query = "SELECT datname FROM pg_database WHERE datistemplate = false AND datname NOT IN ('postgres') ORDER BY datname";
+                    string query =
+                        "SELECT datname FROM pg_database WHERE datistemplate = false AND datname NOT IN ('postgres') ORDER BY datname";
                     using (var cmd = new NpgsqlCommand(query, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -163,6 +174,7 @@ namespace Course_work_in_OOP_Lipatov
             {
                 MessageBox.Show($"Ошибка получения списка БД: {ex.Message}");
             }
+
             return databases;
         }
 
@@ -174,9 +186,14 @@ namespace Course_work_in_OOP_Lipatov
         {
             if (string.IsNullOrWhiteSpace(dbName) || !dbNameRegex.IsMatch(dbName))
             {
-                MessageBox.Show("Некорректное имя базы данных. Имя не должно начинаться с пробела или цифры, не может быть пустым.\nДолжно начинаться с заглавной буквы английского алфавита.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Ошибка в названии базы данных!\n" +
+                    "\nИмя должно начинаться с заглавной латинской буквы и должно содержать 6 символов.\n" +
+                    "\nИмя НЕ должно начинаться с пробела или цифры и не может быть пустым.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(masterConnectionString))
@@ -188,13 +205,16 @@ namespace Course_work_in_OOP_Lipatov
                         cmd.ExecuteNonQuery();
                     }
                 }
+
                 SetCurrentDatabase(dbName);
                 InitializeDatabase();
-                MessageBox.Show($"База данных \"{dbName}\" успешно создана.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"База данных \"{dbName}\" успешно создана.",
+                    "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка создания БД: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка создания БД: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -204,11 +224,15 @@ namespace Course_work_in_OOP_Lipatov
         /// <param name="dbName">Имя удаляемой базы данных</param>
         public void DeleteDatabase(string dbName)
         {
-            if (dbName.Equals(currentDatabaseName, StringComparison.OrdinalIgnoreCase))
+            if (dbName.Equals(currentDatabaseName,
+                    StringComparison.OrdinalIgnoreCase))
             {
-                MessageBox.Show("Нельзя удалить текущую активную базу данных. Сначала переключитесь на другую.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Нельзя удалить текущую активную базу данных. Сначала переключитесь на другую.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(masterConnectionString))
@@ -222,17 +246,21 @@ namespace Course_work_in_OOP_Lipatov
                     {
                         cmd.ExecuteNonQuery();
                     }
+
                     string dropQuery = $"DROP DATABASE \"{dbName}\"";
                     using (var cmd = new NpgsqlCommand(dropQuery, conn))
                     {
                         cmd.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show($"База данных \"{dbName}\" удалена.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show($"База данных \"{dbName}\" удалена.", "Успех",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка удаления БД: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка удаления БД: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -251,7 +279,8 @@ namespace Course_work_in_OOP_Lipatov
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка переключения на БД {dbName}: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка переключения на БД {dbName}: {ex.Message}",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -267,6 +296,7 @@ namespace Course_work_in_OOP_Lipatov
             {
                 return false;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(connectionString))
@@ -286,21 +316,29 @@ namespace Course_work_in_OOP_Lipatov
                     {
                         query += " AND id <> @id";
                     }
+
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@full_name", patient.FullName ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@full_name",
+                            patient.FullName ?? string.Empty);
                         cmd.Parameters.AddWithValue("@age", patient.Age);
-                        cmd.Parameters.AddWithValue("@gender", patient.Gender ?? string.Empty);
-                        cmd.Parameters.AddWithValue("@disease", patient.Disease ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@gender",
+                            patient.Gender ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@disease",
+                            patient.Disease ?? string.Empty);
                         cmd.Parameters.AddWithValue("@duration", patient.Duration);
-                        cmd.Parameters.AddWithValue("@severity", patient.Severity ?? string.Empty);
-                        cmd.Parameters.AddWithValue("@department", patient.Department ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@severity",
+                            patient.Severity ?? string.Empty);
+                        cmd.Parameters.AddWithValue("@department",
+                            patient.Department ?? string.Empty);
                         if (patient.Id > 0)
                         {
                             cmd.Parameters.AddWithValue("@id", patient.Id);
                         }
+
                         var result = cmd.ExecuteScalar();
-                        if (result != null && int.TryParse(result.ToString(), out int count))
+                        if (result != null &&
+                            int.TryParse(result.ToString(), out int count))
                         {
                             return count > 0;
                         }
@@ -309,8 +347,10 @@ namespace Course_work_in_OOP_Lipatov
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при проверке дубликатов: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка при проверке дубликатов: {ex.Message}",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             return false;
         }
 
@@ -325,12 +365,15 @@ namespace Course_work_in_OOP_Lipatov
             {
                 return patients;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(connectionString))
                 {
                     conn.Open();
-                    using (var cmd = new NpgsqlCommand("SELECT * FROM patients ORDER BY id", conn))
+                    using (var cmd =
+                           new NpgsqlCommand("SELECT * FROM patients ORDER BY id",
+                               conn))
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -354,6 +397,7 @@ namespace Course_work_in_OOP_Lipatov
             {
                 MessageBox.Show($"Ошибка загрузки пациентов: {ex.Message}");
             }
+
             return patients;
         }
 
@@ -367,14 +411,16 @@ namespace Course_work_in_OOP_Lipatov
             {
                 return;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(connectionString))
                 {
                     conn.Open();
                     using (var cmd = new NpgsqlCommand(
-                        "INSERT INTO patients (full_name, age, gender, disease, severity, duration, department) " +
-                        "VALUES (@fullName, @age, @gender, @disease, @severity, @duration, @department) RETURNING id", conn))
+                               "INSERT INTO patients (full_name, age, gender, disease, severity, duration, department) " +
+                               "VALUES (@fullName, @age, @gender, @disease, @severity, @duration, @department) RETURNING id",
+                               conn))
                     {
                         cmd.Parameters.AddWithValue("@fullName", patient.FullName);
                         cmd.Parameters.AddWithValue("@age", patient.Age);
@@ -382,9 +428,12 @@ namespace Course_work_in_OOP_Lipatov
                         cmd.Parameters.AddWithValue("@disease", patient.Disease);
                         cmd.Parameters.AddWithValue("@severity", patient.Severity);
                         cmd.Parameters.AddWithValue("@duration", patient.Duration);
-                        cmd.Parameters.AddWithValue("@department", patient.Department);
+                        cmd.Parameters.AddWithValue("@department",
+                            patient.Department);
                         var newId = cmd.ExecuteScalar();
-                        MessageBox.Show($"Пациент добавлен успешно! ID: {newId}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Пациент добавлен успешно! ID: {newId}",
+                            "Успех", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
                     }
                 }
             }
@@ -404,15 +453,16 @@ namespace Course_work_in_OOP_Lipatov
             {
                 return;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(connectionString))
                 {
                     conn.Open();
                     using (var cmd = new NpgsqlCommand(
-                        "UPDATE patients SET full_name=@fullName, age=@age, gender=@gender, " +
-                        "disease=@disease, severity=@severity, duration=@duration, " +
-                        "department=@department WHERE id=@id", conn))
+                               "UPDATE patients SET full_name=@fullName, age=@age, gender=@gender, " +
+                               "disease=@disease, severity=@severity, duration=@duration, " +
+                               "department=@department WHERE id=@id", conn))
                     {
                         cmd.Parameters.AddWithValue("@id", patient.Id);
                         cmd.Parameters.AddWithValue("@fullName", patient.FullName);
@@ -421,10 +471,13 @@ namespace Course_work_in_OOP_Lipatov
                         cmd.Parameters.AddWithValue("@disease", patient.Disease);
                         cmd.Parameters.AddWithValue("@severity", patient.Severity);
                         cmd.Parameters.AddWithValue("@duration", patient.Duration);
-                        cmd.Parameters.AddWithValue("@department", patient.Department);
+                        cmd.Parameters.AddWithValue("@department",
+                            patient.Department);
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
-                            MessageBox.Show("Данные пациента обновлены успешно!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Данные пациента обновлены успешно!",
+                                "Успех", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
                     }
                 }
             }
@@ -444,17 +497,21 @@ namespace Course_work_in_OOP_Lipatov
             {
                 return;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(connectionString))
                 {
                     conn.Open();
-                    using (var cmd = new NpgsqlCommand("DELETE FROM patients WHERE id=@id", conn))
+                    using (var cmd =
+                           new NpgsqlCommand("DELETE FROM patients WHERE id=@id",
+                               conn))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
-                            MessageBox.Show("Пациент удален успешно!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Пациент удален успешно!", "Успех",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -476,6 +533,7 @@ namespace Course_work_in_OOP_Lipatov
             {
                 return patients;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(connectionString))
@@ -514,6 +572,7 @@ namespace Course_work_in_OOP_Lipatov
             {
                 MessageBox.Show($"Ошибка поиска: {ex.Message}");
             }
+
             return patients;
         }
 
@@ -527,6 +586,7 @@ namespace Course_work_in_OOP_Lipatov
             {
                 return;
             }
+
             try
             {
                 using (var conn = new NpgsqlConnection(connectionString))
@@ -534,28 +594,37 @@ namespace Course_work_in_OOP_Lipatov
                     conn.Open();
                     using (var transaction = conn.BeginTransaction())
                     {
-                        using (var cmd = new NpgsqlCommand("DELETE FROM patients", conn, transaction))
+                        using (var cmd = new NpgsqlCommand("DELETE FROM patients",
+                                   conn, transaction))
                         {
                             int deletedCount = cmd.ExecuteNonQuery();
-                            using (var resetCmd = new NpgsqlCommand("ALTER SEQUENCE patients_id_seq RESTART WITH 1", conn, transaction))
+                            using (var resetCmd =
+                                   new NpgsqlCommand(
+                                       "ALTER SEQUENCE patients_id_seq RESTART WITH 1",
+                                       conn, transaction))
                             {
                                 resetCmd.ExecuteNonQuery();
                             }
+
                             transaction.Commit();
-                            MessageBox.Show($"Удалено пациентов: {deletedCount}", "Очистка выполнена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"Удалено пациентов: {deletedCount}",
+                                "Очистка выполнена", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Ошибка при очистке базы данных: {ex.Message}", ex);
+                throw new Exception($"Ошибка при очистке базы данных: {ex.Message}",
+                    ex);
             }
         }
 
         /// <summary>
         /// Показывает, выбрана ли в данный момент какая-либо база данных
         /// </summary>
-        public bool HasDatabaseSelected => !string.IsNullOrEmpty(currentDatabaseName);
+        public bool HasDatabaseSelected =>
+            !string.IsNullOrEmpty(currentDatabaseName);
     }
 }

@@ -21,6 +21,11 @@ namespace Course_work_in_OOP_Lipatov
         public bool DatabaseChanged { get; private set; }
 
         /// <summary>
+        /// Флаг для закрытия формы после успешного подключения к БД.
+        /// </summary>
+        private bool isClosingAfterSwitch;
+
+        /// <summary>
         /// Инициализирует новый экземпляр формы управления базами данных
         /// </summary>
         /// <param name="manager">Объект менеджера баз данных</param>
@@ -81,14 +86,15 @@ namespace Course_work_in_OOP_Lipatov
         {
             if (listBoxDatabases.SelectedItem == null)
             {
-                MessageBox.Show("Выберите базу данных для переключения.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Выберите базу данных для подключения!!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             string? dbName = listBoxDatabases.SelectedItem.ToString();
             if (dbManager.SwitchToDatabase(dbName))
             {
                 DatabaseChanged = true;
-                MessageBox.Show($"Переключено на базу данных \"{dbName}\".", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Подключено к базе данных: \"{dbName}\".", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                isClosingAfterSwitch = true;
                 this.Close();
             }
         }

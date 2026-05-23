@@ -13,51 +13,44 @@
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalForm));
-            label1 = new Label();
-            button1 = new Button();
-            dataGridView1 = new DataGridView();
-            btnAdd = new Button();
-            btnEdit = new Button();
-            btnDelete = new Button();
-            txtSearch = new TextBox();
-            btnSearch = new Button();
-            btnExport = new Button();
-            btnRefresh = new Button();
-            btnClearDatabase = new Button();
-            label2 = new Label();
-            btnManageDatabases = new Button();
+            button1 = new System.Windows.Forms.Button();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
+            btnAdd = new System.Windows.Forms.Button();
+            btnEdit = new System.Windows.Forms.Button();
+            btnDelete = new System.Windows.Forms.Button();
+            txtSearch = new System.Windows.Forms.TextBox();
+            btnSearch = new System.Windows.Forms.Button();
+            btnExport = new System.Windows.Forms.Button();
+            btnRefresh = new System.Windows.Forms.Button();
+            btnClearDatabase = new System.Windows.Forms.Button();
+            btnManageDatabases = new System.Windows.Forms.Button();
+            label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.ForeColor = Color.DimGray;
-            label1.Location = new Point(787, 440);
-            label1.Name = "label1";
-            label1.Size = new Size(281, 29);
-            label1.TabIndex = 0;
-            label1.Text = "Вернуться на титульную страницу";
-            // 
             // button1
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.BackColor = Color.SteelBlue;
+            button1.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
+            button1.BackColor = System.Drawing.Color.LightGray;
+            button1.Cursor = System.Windows.Forms.Cursors.Hand;
             button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(790, 482);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button1.Font = new System.Drawing.Font("JetBrains Mono", 10.199999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            button1.ForeColor = System.Drawing.Color.Black;
+            button1.Location = new System.Drawing.Point(563, 510);
+            button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(243, 44);
+            button1.Size = new System.Drawing.Size(470, 32);
             button1.TabIndex = 1;
-            button1.Text = "Титульная страница";
+            button1.Text = "Вернуться на страницу \"информация об авторе\"";
             button1.UseVisualStyleBackColor = false;
             button1.Click += BtnBack_Click;
             // 
@@ -68,198 +61,201 @@
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.LightSteelBlue;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridView1.GridColor = Color.LightGray;
-            dataGridView1.Location = new Point(12, 112);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
+            dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            dataGridView1.GridColor = System.Drawing.Color.LightGray;
+            dataGridView1.Location = new System.Drawing.Point(12, 99);
+            dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.DefaultCellStyle.BackColor = Color.White;
-            dataGridView1.RowTemplate.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
-            dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             dataGridView1.RowTemplate.Height = 24;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1021, 312);
+            dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new System.Drawing.Size(1021, 312);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
             dataGridView1.ColumnHeaderMouseClick += DataGridView1_ColumnHeaderMouseClick;
             // 
             // btnAdd
             // 
-            btnAdd.BackColor = Color.SeaGreen;
+            btnAdd.BackColor = System.Drawing.Color.LightGray;
+            btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             btnAdd.FlatAppearance.BorderSize = 0;
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnAdd.ForeColor = Color.White;
-            btnAdd.Location = new Point(12, 432);
-            btnAdd.Margin = new Padding(3, 4, 3, 4);
+            btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAdd.Font = new System.Drawing.Font("JetBrains Mono", 10.199999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            btnAdd.ForeColor = System.Drawing.Color.Black;
+            btnAdd.Location = new System.Drawing.Point(308, 13);
+            btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(150, 44);
+            btnAdd.Size = new System.Drawing.Size(193, 32);
             btnAdd.TabIndex = 3;
-            btnAdd.Text = "Добавить";
+            btnAdd.Text = "Добавить пациента";
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += BtnAdd_Click;
             // 
             // btnEdit
             // 
-            btnEdit.BackColor = Color.Goldenrod;
+            btnEdit.BackColor = System.Drawing.Color.LightGray;
+            btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             btnEdit.FlatAppearance.BorderSize = 0;
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnEdit.ForeColor = Color.White;
-            btnEdit.Location = new Point(168, 432);
-            btnEdit.Margin = new Padding(3, 4, 3, 4);
+            btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnEdit.Font = new System.Drawing.Font("JetBrains Mono", 10.199999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            btnEdit.ForeColor = System.Drawing.Color.Black;
+            btnEdit.Location = new System.Drawing.Point(12, 51);
+            btnEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(150, 44);
+            btnEdit.Size = new System.Drawing.Size(290, 30);
             btnEdit.TabIndex = 4;
-            btnEdit.Text = "Редактировать";
+            btnEdit.Text = "Редактировать пациента";
             btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += BtnEdit_Click;
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.IndianRed;
+            btnDelete.BackColor = System.Drawing.Color.LightGray;
+            btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(324, 432);
-            btnDelete.Margin = new Padding(3, 4, 3, 4);
+            btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnDelete.Font = new System.Drawing.Font("JetBrains Mono", 10.199999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            btnDelete.ForeColor = System.Drawing.Color.Black;
+            btnDelete.Location = new System.Drawing.Point(308, 51);
+            btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(150, 44);
+            btnDelete.Size = new System.Drawing.Size(193, 30);
             btnDelete.TabIndex = 5;
-            btnDelete.Text = "Удалить";
+            btnDelete.Text = "Удалить пациента";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDelete_Click;
             // 
             // txtSearch
             // 
-            txtSearch.BorderStyle = BorderStyle.FixedSingle;
-            txtSearch.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            txtSearch.Location = new Point(484, 440);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            txtSearch.Location = new System.Drawing.Point(320, 440);
+            txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(135, 26);
+            txtSearch.Size = new System.Drawing.Size(342, 26);
             txtSearch.TabIndex = 6;
             // 
             // btnSearch
             // 
-            btnSearch.BackColor = Color.SteelBlue;
+            btnSearch.BackColor = System.Drawing.Color.LightGray;
+            btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(625, 432);
-            btnSearch.Margin = new Padding(3, 4, 3, 4);
+            btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnSearch.Font = new System.Drawing.Font("JetBrains Mono", 10.199999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            btnSearch.ForeColor = System.Drawing.Color.Black;
+            btnSearch.Location = new System.Drawing.Point(668, 440);
+            btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(150, 44);
+            btnSearch.Size = new System.Drawing.Size(233, 28);
             btnSearch.TabIndex = 7;
-            btnSearch.Text = "Поиск";
+            btnSearch.Text = "Найти пациента";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += BtnSearch_Click;
             // 
             // btnExport
             // 
-            btnExport.BackColor = Color.MediumSeaGreen;
+            btnExport.BackColor = System.Drawing.Color.LightGray;
+            btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
             btnExport.FlatAppearance.BorderSize = 0;
-            btnExport.FlatStyle = FlatStyle.Flat;
-            btnExport.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnExport.ForeColor = Color.White;
-            btnExport.Location = new Point(12, 482);
-            btnExport.Margin = new Padding(3, 4, 3, 4);
+            btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnExport.Font = new System.Drawing.Font("JetBrains Mono", 10.199999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            btnExport.ForeColor = System.Drawing.Color.Black;
+            btnExport.Location = new System.Drawing.Point(532, 49);
+            btnExport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(150, 44);
+            btnExport.Size = new System.Drawing.Size(279, 34);
             btnExport.TabIndex = 8;
-            btnExport.Text = "Экспорт";
+            btnExport.Text = "Экспорт базы данных (pdf)";
             btnExport.UseVisualStyleBackColor = false;
             btnExport.Click += BtnExport_Click;
             // 
             // btnRefresh
             // 
-            btnRefresh.BackColor = Color.FromArgb(0, 192, 192);
+            btnRefresh.BackColor = System.Drawing.Color.LightGray;
+            btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             btnRefresh.FlatAppearance.BorderSize = 0;
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(168, 482);
-            btnRefresh.Margin = new Padding(3, 4, 3, 4);
+            btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnRefresh.Font = new System.Drawing.Font("JetBrains Mono", 10.199999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            btnRefresh.ForeColor = System.Drawing.Color.Black;
+            btnRefresh.Location = new System.Drawing.Point(12, 13);
+            btnRefresh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(150, 44);
+            btnRefresh.Size = new System.Drawing.Size(290, 32);
             btnRefresh.TabIndex = 9;
-            btnRefresh.Text = "Обновить";
+            btnRefresh.Text = "Загрузить список пациентов";
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += BtnRefresh_Click;
             // 
             // btnClearDatabase
             // 
-            btnClearDatabase.BackColor = Color.Crimson;
+            btnClearDatabase.BackColor = System.Drawing.Color.Red;
+            btnClearDatabase.Cursor = System.Windows.Forms.Cursors.Hand;
             btnClearDatabase.FlatAppearance.BorderSize = 0;
-            btnClearDatabase.FlatStyle = FlatStyle.Flat;
-            btnClearDatabase.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnClearDatabase.ForeColor = Color.White;
-            btnClearDatabase.Location = new Point(324, 484);
-            btnClearDatabase.Margin = new Padding(3, 4, 3, 4);
+            btnClearDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnClearDatabase.Font = new System.Drawing.Font("JetBrains Mono ExtraBold", 10.199999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            btnClearDatabase.ForeColor = System.Drawing.Color.Black;
+            btnClearDatabase.Location = new System.Drawing.Point(532, 13);
+            btnClearDatabase.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnClearDatabase.Name = "btnClearDatabase";
-            btnClearDatabase.Size = new Size(150, 44);
+            btnClearDatabase.Size = new System.Drawing.Size(279, 32);
             btnClearDatabase.TabIndex = 10;
-            btnClearDatabase.Text = "Очистить БД";
+            btnClearDatabase.Text = "Очистить базу данных";
             btnClearDatabase.UseVisualStyleBackColor = false;
             btnClearDatabase.Click += BtnClearDatabase_Click;
             // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top;
-            label2.AutoSize = true;
-            label2.BackColor = Color.SteelBlue;
-            label2.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(256, 48);
-            label2.Name = "label2";
-            label2.Padding = new Padding(10, 12, 10, 12);
-            label2.Size = new Size(574, 53);
-            label2.TabIndex = 11;
-            label2.Text = "ИНФОРМАЦИОННАЯ СИСТЕМА БОЛЬНИЦЫ";
-            // 
             // btnManageDatabases
             // 
-            btnManageDatabases.BackColor = Color.DarkCyan;
+            btnManageDatabases.BackColor = System.Drawing.Color.LightGray;
+            btnManageDatabases.Cursor = System.Windows.Forms.Cursors.Hand;
             btnManageDatabases.FlatAppearance.BorderSize = 0;
-            btnManageDatabases.FlatStyle = FlatStyle.Flat;
-            btnManageDatabases.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnManageDatabases.ForeColor = Color.White;
-            btnManageDatabases.Location = new Point(484, 484);
-            btnManageDatabases.Margin = new Padding(3, 4, 3, 4);
+            btnManageDatabases.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnManageDatabases.Font = new System.Drawing.Font("JetBrains Mono", 10.199999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            btnManageDatabases.ForeColor = System.Drawing.Color.Black;
+            btnManageDatabases.Location = new System.Drawing.Point(12, 510);
+            btnManageDatabases.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnManageDatabases.Name = "btnManageDatabases";
-            btnManageDatabases.Size = new Size(150, 44);
+            btnManageDatabases.Size = new System.Drawing.Size(545, 32);
             btnManageDatabases.TabIndex = 12;
-            btnManageDatabases.Text = "Управление БД";
+            btnManageDatabases.Text = "Вернуться на страницу \"управление базами данных\"";
             btnManageDatabases.UseVisualStyleBackColor = false;
             btnManageDatabases.Click += BtnManageDatabases_Click;
             // 
+            // label2
+            // 
+            label2.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+            label2.Location = new System.Drawing.Point(12, 440);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(302, 23);
+            label2.TabIndex = 13;
+            label2.Text = "Найти пациента в базе данных:";
+            // 
             // HospitalForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1068, 555);
-            Controls.Add(btnManageDatabases);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.WhiteSmoke;
+            ClientSize = new System.Drawing.Size(1068, 555);
             Controls.Add(label2);
+            Controls.Add(btnManageDatabases);
             Controls.Add(btnClearDatabase);
             Controls.Add(btnRefresh);
             Controls.Add(btnExport);
@@ -270,19 +266,18 @@
             Controls.Add(btnAdd);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
-            Controls.Add(label1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "HospitalForm";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "ИС Больница - Главная форма";
+            Icon = ((System.Drawing.Icon)resources.GetObject("$this.Icon"));
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MaximizeBox = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Главная форма";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
-
         }
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAdd;
@@ -293,7 +288,6 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnClearDatabase;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnManageDatabases;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFullName;

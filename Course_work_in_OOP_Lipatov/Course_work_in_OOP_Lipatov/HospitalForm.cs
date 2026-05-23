@@ -253,35 +253,27 @@ namespace Course_work_in_OOP_Lipatov
         private void BtnClearDatabase_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "ВНИМАНИЕ! Это действие удалит ВСЕХ пациентов из базы данных!\n\nВы уверены, что хотите продолжить?",
+                "Это действие удалит ВСЕХ пациентов из базы данных!\n\nВы уверены, что хотите продолжить?",
                 "Очистка базы данных",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                result = MessageBox.Show(
-                    "Это действие нельзя отменить!\nТочно удалить всех пациентов?",
-                    "Подтверждение очистки",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Exclamation);
-                if (result == DialogResult.Yes)
+                try
                 {
-                    try
-                    {
-                        dbManager.ClearAllPatients();
-                        LoadPatients();
-                        MessageBox.Show("База данных успешно очищена!",
-                            "Операция завершена",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка при очистке базы данных: {ex.Message}",
-                            "Ошибка",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    dbManager.ClearAllPatients();
+                    LoadPatients();
+                    MessageBox.Show("База данных успешно очищена!",
+                        "Операция завершена",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при очистке базы данных: {ex.Message}",
+                        "Ошибка",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }
