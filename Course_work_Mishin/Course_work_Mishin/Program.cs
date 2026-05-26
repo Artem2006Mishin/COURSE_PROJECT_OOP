@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Course_work_in_OOP_Lipatov
+namespace Course_work_Mishin
 {
     internal static class Program
     {

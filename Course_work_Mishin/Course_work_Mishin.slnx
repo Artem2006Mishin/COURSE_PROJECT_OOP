@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="Course_work_in_OOP_Lipatov/Course_work_in_OOP_Lipatov.csproj" />
+  <Project Path="Course_work_Mishin/Course_work_Mishin.csproj" />
   <Project Path="Programm/Programm.vdproj" Type="Installer">
     <Build />
   </Project>

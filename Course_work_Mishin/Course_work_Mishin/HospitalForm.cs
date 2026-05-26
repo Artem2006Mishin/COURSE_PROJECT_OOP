@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using QuestPDF.Fluent;
@@ -7,7 +7,7 @@ using QuestPDF.Infrastructure;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Course_work_in_OOP_Lipatov
+namespace Course_work_Mishin
 {
     public partial class HospitalForm : Form
     {

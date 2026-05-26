@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using Npgsql;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Course_work_in_OOP_Lipatov
+namespace Course_work_Mishin
 {
     public class DataBaseManager
     {

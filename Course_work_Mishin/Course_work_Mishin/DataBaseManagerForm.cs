@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Course_work_in_OOP_Lipatov
+namespace Course_work_Mishin
 {
     public partial class DataBaseManagerForm : Form
     {
@@ -84,12 +84,11 @@ namespace Course_work_in_OOP_Lipatov
         /// <param name="e"></param>
         private void BtnSwitch_Click(object sender, EventArgs e)
         {
-            if (listBoxDatabases.SelectedItem == null)
+            if (listBoxDatabases.SelectedItem?.ToString() is not { Length: > 0 } dbName)
             {
                 MessageBox.Show("Выберите базу данных для подключения!!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            string? dbName = listBoxDatabases.SelectedItem.ToString();
             if (dbManager.SwitchToDatabase(dbName))
             {
                 DatabaseChanged = true;
@@ -106,12 +105,11 @@ namespace Course_work_in_OOP_Lipatov
         /// <param name="e"></param>
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (listBoxDatabases.SelectedItem == null)
+            if (listBoxDatabases.SelectedItem?.ToString() is not { Length: > 0 } dbName)
             {
                 MessageBox.Show("Выберите базу данных для удаления.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            string? dbName = listBoxDatabases.SelectedItem.ToString();
             if (MessageBox.Show($"Удалить базу данных \"{dbName}\"?\nВосстановить будет невозможно.", "Подтверждение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Course_work_in_OOP_Lipatov
+namespace Course_work_Mishin
 {
     public partial class AuthorForm : Form
     {
@@ -32,7 +32,7 @@ namespace Course_work_in_OOP_Lipatov
         /// </summary>
         /// <param name="sender">Источник события</param>
         /// <param name="e">Параметры события</param>
-        private void AutoTransitionTimer_Tick(object sender, EventArgs e)
+        private void AutoTransitionTimer_Tick(object? sender, EventArgs e)
         {
             autoTransitionTimer.Stop();
             PerformTransition();

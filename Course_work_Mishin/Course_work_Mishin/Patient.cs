@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Course_work_in_OOP_Lipatov
+namespace Course_work_Mishin
 {
     public class Patient
     {
@@ -14,7 +14,7 @@ namespace Course_work_in_OOP_Lipatov
         /// <summary>
         /// Полное имя пациента
         /// </summary>
-        public string FullName { get; set; }
+        public string FullName { get; set; } = string.Empty;
 
         /// <summary>
         /// Возраст пациента
@@ -24,17 +24,17 @@ namespace Course_work_in_OOP_Lipatov
         /// <summary>
         /// Пол пациента
         /// </summary>
-        public string Gender { get; set; }
+        public string Gender { get; set; } = string.Empty;
 
         /// <summary>
         /// Диагноз пациента
         /// </summary>
-        public string Disease { get; set; }
+        public string Disease { get; set; } = string.Empty;
 
         /// <summary>
         /// Тяжесть заболевания
         /// </summary>
-        public string Severity { get; set; }
+        public string Severity { get; set; } = string.Empty;
 
         /// <summary>
         /// Продолжительность заболевания в днях
@@ -44,7 +44,7 @@ namespace Course_work_in_OOP_Lipatov
         /// <summary>
         /// Отделение больницы, в котором проходит лечение пациент
         /// </summary>
-        public string Department { get; set; }
+        public string Department { get; set; } = string.Empty;
 
         /// <summary>
         /// Конструктор по умолчанию
