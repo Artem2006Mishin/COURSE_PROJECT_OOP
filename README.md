@@ -1,85 +1,168 @@
-# 🎓 Курсовая работа по ООП (LipatovMatvey)
+# Course Work Mishin
 
-Cовременное учебное приложение на C# в рамках курсовой работы по дисциплине "Объектно-Ориентированное Программирование".
+Курсовой проект по дисциплине "Объектно-ориентированное программирование".
+Приложение предназначено для учета пациентов больницы: хранения данных,
+поиска, редактирования записей, управления базами данных и экспорта списка
+пациентов в PDF.
 
----
+## Описание
 
-## 📋 Описание проекта
+Проект реализован как Windows Forms приложение на C# и демонстрирует
+использование принципов ООП:
 
-**Course_Work_In_OOP_Lipatov** — это приложение, полностью написанное на C#. Проект демонстрирует принципы объектно-ориентированного программирования: инкапсуляция, наследование, полиморфизм и абстракция.
+- инкапсуляция данных пациента в модели `Patient`;
+- разделение ответственности между формами интерфейса и классом работы с БД;
+- работа с объектами предметной области через коллекции и привязку к таблице;
+- обработка пользовательских действий через события Windows Forms.
 
-- **Репозиторий:** [LipatovMatvey/Course_Work_In_OOP_Lipatov](https://github.com/LipatovMatvey/Course_Work_In_OOP_Lipatov)
-- **Язык:** C# (.NET)
-- **Лицензия:** укажите при необходимости
+Основная сущность системы - пациент. Для каждого пациента хранятся:
 
----
+- ID;
+- ФИО;
+- возраст;
+- пол;
+- диагноз;
+- тяжесть заболевания;
+- продолжительность заболевания в днях;
+- отделение больницы.
 
-## 🛠️ Технологический стек
+## Возможности
 
-- **Язык:** C#
-- **Платформа:** .NET (уточните версию, например .NET 8)
-- **Среда разработки:** Visual Studio / Rider / VS Code
+- создание и выбор рабочей базы данных PostgreSQL;
+- удаление неактивных баз данных;
+- автоматическое создание таблицы `patients`;
+- добавление пациентов;
+- редактирование данных пациента;
+- удаление выбранной записи;
+- очистка всех пациентов из текущей базы;
+- проверка дубликатов перед сохранением;
+- поиск по ФИО, диагнозу и отделению;
+- сортировка данных по заголовкам столбцов;
+- экспорт текущего списка пациентов в PDF;
+- отдельные формы для стартового экрана, управления пациентами и управления БД.
 
----
+## Технологии
 
-## 📁 Структура проекта
+- C#;
+- .NET 9;
+- Windows Forms;
+- PostgreSQL;
+- Npgsql 8.0.3;
+- QuestPDF 2026.5.0;
+- Visual Studio или JetBrains Rider.
 
+## Структура проекта
+
+```text
+COURSE_PROJECT_OOP/
+|-- README.md
+|-- .gitignore
+|-- .gitattributes
+`-- Course_work_Mishin/
+    |-- Course_work_Mishin.slnx
+    |-- Course_work_Mishin/
+    |   |-- Program.cs
+    |   |-- App.config
+    |   |-- Patient.cs
+    |   |-- DataBaseManager.cs
+    |   |-- AuthorForm.cs
+    |   |-- HospitalForm.cs
+    |   |-- PatientForm.cs
+    |   |-- DataBaseManagerForm.cs
+    |   `-- FOTO/
+    `-- Programm/
+        |-- Programm.vdproj
+        `-- Release/
 ```
-Course_Work_In_OOP_Lipatov/
-├── src/               # Исходный код C#
-│   ├── Program.cs     # Точка входа
-│   └── ...            # Остальные файлы
-├── README.md          # Документация проекта
+
+## Требования
+
+- Windows;
+- .NET SDK 9.0 или новее;
+- PostgreSQL;
+- Visual Studio 2022, JetBrains Rider или другая IDE с поддержкой C#;
+- доступ к пользователю PostgreSQL, который может создавать и удалять базы данных.
+
+## Настройка PostgreSQL
+
+Параметры подключения находятся в файле
+`Course_work_Mishin/Course_work_Mishin/App.config`.
+
+По умолчанию используется локальный сервер PostgreSQL:
+
+```xml
+<add name="MasterDB"
+     connectionString="Host=localhost;Port=5432;Username=postgres;Password=...;Database=postgres"
+     providerName="Npgsql" />
 ```
 
----
+Перед запуском нужно указать актуальные `Username` и `Password` для вашей
+локальной установки PostgreSQL. Приложение подключается к системной базе
+`postgres`, после чего позволяет создавать отдельные рабочие базы данных.
 
-## 🚀 Быстрый старт
+Имя новой базы данных должно:
 
-### Предварительные требования
+- начинаться с заглавной латинской буквы;
+- содержать не менее 6 символов;
+- состоять из латинских букв, цифр и символа `_`.
 
-- .NET SDK (актуальная версия, например [.NET 8.0](https://dotnet.microsoft.com/download))
-- Любая IDE для работы с C#
+## Запуск
 
-### Установка и запуск
+1. Клонировать репозиторий:
 
-1. Клонируйте репозиторий
-    ```sh
-    git clone https://github.com/LipatovMatvey/Course_Work_In_OOP_Lipatov.git
-    cd Course_Work_In_OOP_Lipatov
-    ```
-2. Постройте и запустите проект
-    ```sh
-    dotnet build
-    dotnet run --project src/
-    ```
+```bash
+git clone https://github.com/Artem2006Mishin/COURSE_PROJECT_OOP.git
+cd COURSE_PROJECT_OOP
+```
 
----
+2. Восстановить зависимости и собрать проект:
 
-## 🤝 Вклад
+```bash
+dotnet restore Course_work_Mishin/Course_work_Mishin.slnx
+dotnet build Course_work_Mishin/Course_work_Mishin.slnx
+```
 
-Вклады приветствуются! Создавайте ветки, issues, pull requests.
+3. Запустить приложение:
 
----
+```bash
+dotnet run --project Course_work_Mishin/Course_work_Mishin/Course_work_Mishin.csproj
+```
 
-## 👤 Автор
+Также проект можно открыть через файл решения:
 
-- **Матвей Липатов**
-- GitHub: [@LipatovMatvey](https://github.com/LipatovMatvey)
+```text
+Course_work_Mishin/Course_work_Mishin.slnx
+```
 
----
+## Работа с приложением
 
-## 📞 Поддержка
+При запуске открывается стартовая форма. После перехода в основное окно, если
+рабочая база данных еще не выбрана, приложение откроет форму управления базами.
 
-Возникают вопросы? Используйте [раздел Issues проекта](https://github.com/LipatovMatvey/Course_Work_In_OOP_Lipatov/issues).
+Типовой сценарий работы:
 
----
+1. Создать новую базу данных или выбрать существующую.
+2. Добавить записи пациентов через форму добавления.
+3. Использовать поиск и сортировку для просмотра данных.
+4. При необходимости изменить, удалить или очистить записи.
+5. Экспортировать список пациентов в PDF.
 
-## 🔗 Ссылки
+## Сборка установщика
 
-- Репозиторий: https://github.com/LipatovMatvey/Course_Work_In_OOP_Lipatov
-- Issues: https://github.com/LipatovMatvey/Course_Work_In_OOP_Lipatov/issues
+В проекте есть установочный проект:
 
----
+```text
+Course_work_Mishin/Programm/Programm.vdproj
+```
 
-**Успехов в изучении ООП!**
+Готовые файлы установщика находятся в:
+
+```text
+Course_work_Mishin/Programm/Release/
+```
+
+## Автор
+
+Артем Мишин
+
+GitHub: [Artem2006Mishin](https://github.com/Artem2006Mishin)
