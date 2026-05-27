@@ -48,6 +48,7 @@ namespace Course_work_Mishin
             {
                 listBoxDatabases.Items.Add(db);
             }
+
             if (listBoxDatabases.Items.Count > 0)
             {
                 listBoxDatabases.SelectedIndex = 0;
@@ -64,14 +65,18 @@ namespace Course_work_Mishin
             string newDbName = txtNewDbName.Text.Trim();
             if (string.IsNullOrWhiteSpace(newDbName))
             {
-                MessageBox.Show("Введите имя новой базы данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Введите имя новой базы данных.", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             if (newDbName.IndexOfAny(System.IO.Path.GetInvalidFileNameChars()) >= 0)
             {
-                MessageBox.Show("Имя БД содержит недопустимые символы.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Имя БД содержит недопустимые символы.", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             dbManager.CreateDatabase(newDbName);
             LoadDatabases();
             txtNewDbName.Clear();
@@ -84,15 +89,19 @@ namespace Course_work_Mishin
         /// <param name="e"></param>
         private void BtnSwitch_Click(object sender, EventArgs e)
         {
-            if (listBoxDatabases.SelectedItem?.ToString() is not { Length: > 0 } dbName)
+            if (listBoxDatabases.SelectedItem?.ToString() is not
+                { Length: > 0 } dbName)
             {
-                MessageBox.Show("Выберите базу данных для подключения!!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Выберите базу данных для подключения!!",
+                    "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
             if (dbManager.SwitchToDatabase(dbName))
             {
                 DatabaseChanged = true;
-                MessageBox.Show($"Подключено к базе данных: \"{dbName}\".", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Подключено к базе данных: \"{dbName}\".", "Успех",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 isClosingAfterSwitch = true;
                 this.Close();
             }
@@ -105,13 +114,19 @@ namespace Course_work_Mishin
         /// <param name="e"></param>
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (listBoxDatabases.SelectedItem?.ToString() is not { Length: > 0 } dbName)
+            if (listBoxDatabases.SelectedItem?.ToString() is not
+                { Length: > 0 } dbName)
             {
-                MessageBox.Show("Выберите базу данных для удаления.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Выберите базу данных для удаления.", "Информация",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (MessageBox.Show($"Удалить базу данных \"{dbName}\"?\nВосстановить будет невозможно.", "Подтверждение",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+
+            if (MessageBox.Show(
+                    $"Удалить базу данных \"{dbName}\"?\nВосстановить будет невозможно.",
+                    "Подтверждение",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
+                DialogResult.Yes)
             {
                 dbManager.DeleteDatabase(dbName);
                 LoadDatabases();
